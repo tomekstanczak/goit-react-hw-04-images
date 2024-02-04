@@ -54,11 +54,13 @@ componentDidUpdate(prevProps, prevState) {
 }
 
 loadMore = (eve) => {
-this.setState(prevState => ({page: prevState.page + 1}),
-()=>{this.getPictures(eve)})
+  this.setState(prevState => ({page: prevState.page + 1}),
+  ()=>{this.getPictures(eve)})
 }
+
+
 openModal = (selectedPicture) => {
- this.setState({selectedPicture: selectedPicture})
+  this.setState({selectedPicture: selectedPicture})
 }
 
 closeModal = () => {
