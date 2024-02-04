@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import Searchbar from './searchbar/Searchbar';
 import axios from 'axios';
 import ImageGallery from './imagegallery/ImageGallery';
+import Loader from './loader/Loader';
+
 
 axios.defaults.baseURL = 'https://pixabay.com/api/';
 const keyAuth = "41134158-d3e94c46577e61eb60875764f";
@@ -36,9 +38,11 @@ finally{
 
 
   render(){
+    const {isLoading} = this.state;
   return (
     <div>
       <Searchbar onChange={this.holdChange} onSubmit={this.getPictures}/>
+      {isLoading &&<Loader />}
       <ImageGallery pictures={this.state.pictures}/>
 
     </div>
