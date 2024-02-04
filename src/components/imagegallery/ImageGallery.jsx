@@ -22,5 +22,6 @@ export default class ImageGallery extends Component {
 ImageGallery.propTypes = {
     picture: PropTypes.shape({
         id: PropTypes.number,
-    })
+    }),
+    openModal: PropTypes.func,
 }

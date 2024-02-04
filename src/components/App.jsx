@@ -89,4 +89,8 @@ App.propTypes = {
   page: PropTypes.number,
   selectedPicture: PropTypes.string,
   morePictures: PropTypes.bool,
+  onChange: PropTypes.func,
+  onSubmit: PropTypes.func,
+  openModal: PropTypes.func,
+  closeModal: PropTypes.func,
 }

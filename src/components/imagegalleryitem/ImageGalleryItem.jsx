@@ -27,5 +27,5 @@ ImageGalleryItem.propTypes = {
         tags: PropTypes.string,
         id: PropTypes.number,
 
-    })
+    }).isRequired,
 }
