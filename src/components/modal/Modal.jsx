@@ -1,23 +1,9 @@
-import React, { useEffect } from 'react';
 import css from '../styles.module.css';
 import PropTypes from 'prop-types';
+import useModal from 'components/hooks/useModal';
 
 export default function Modal({ picture, closeModal }) {
-  useEffect(() => {
-    const handleKeyDown = event => {
-      if (event.key === 'Escape') {
-        closeModal();
-      }
-    };
-    document.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [closeModal]);
-
-  const handleClose = () => {
-    closeModal();
-  };
+  const { handleClose } = useModal(closeModal);
 
   return (
     <div className={css.Overlay} onClick={handleClose}>
