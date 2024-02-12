@@ -47,6 +47,7 @@ export default function useApi() {
 
   useEffect(() => {
     setPictures([]);
+    setPage(1);
   }, [query]);
 
   const loadMore = eve => {
