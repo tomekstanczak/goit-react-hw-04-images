@@ -19,12 +19,20 @@ export default function useApi() {
     setPage(1);
   };
 
-  const getPictures = async (even, page) => {
+  const loadMore = eve => {
+    const newPage = page + 1;
+    setPage(newPage);
+    console.log(newPage);
+    getPictures(eve, newPage);
+    newPage = page;
+  };
+
+  const getPictures = async (even, newPage) => {
     even.preventDefault();
     setIsLoading(true);
     try {
       const results = await axios.get(
-        `?key=${keyAuth}&q=${query}&image_type=photo&orientation=horizontal&page=${page}&per_page=12`
+        `?key=${keyAuth}&q=${query}&image_type=photo&orientation=horizontal&page=${newPage}&per_page=12`
       );
       const newPictures = results.data.hits.filter(
         newPicture =>
@@ -47,15 +55,7 @@ export default function useApi() {
 
   useEffect(() => {
     setPictures([]);
-    setPage(1);
   }, [query]);
-
-  const loadMore = eve => {
-    const newPage = page + 1;
-    setPage(newPage);
-    console.log(newPage);
-    getPictures(eve, newPage);
-  };
 
   const openModal = selectedPicture => {
     setSelectedPictures(selectedPicture);
