@@ -5,7 +5,7 @@ import Loader from './loader/Loader';
 import Button from './button/Button';
 import Modal from './modal/Modal';
 import css from './styles.module.css';
-import useApi from './hooks/useApi';
+import useApi from '../hooks/useApi';
 
 export default function App() {
   const {

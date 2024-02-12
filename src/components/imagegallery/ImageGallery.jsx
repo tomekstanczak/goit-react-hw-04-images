@@ -1,6 +1,6 @@
 import React from 'react';
 import ImageGalleryItem from '../imagegalleryitem/ImageGalleryItem';
-import css from '../styles.module.css';
+import css from './ImageGallery.module.css';
 import PropTypes from 'prop-types';
 
 export default function ImageGallery(props) {

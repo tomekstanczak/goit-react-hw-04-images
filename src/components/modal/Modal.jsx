@@ -1,6 +1,6 @@
-import css from '../styles.module.css';
+import css from './Modal.module.css';
 import PropTypes from 'prop-types';
-import useModal from 'components/hooks/useModal';
+import useModal from 'hooks/useModal';
 
 export default function Modal({ picture, closeModal }) {
   const { handleClose } = useModal(closeModal);

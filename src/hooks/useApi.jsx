@@ -16,6 +16,7 @@ export default function useApi() {
   const holdChange = event => {
     const queryValue = event.target.value;
     setQuery(queryValue);
+    setPage(1);
   };
 
   const getPictures = async (even, page) => {

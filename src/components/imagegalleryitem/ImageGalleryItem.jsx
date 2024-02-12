@@ -1,5 +1,5 @@
 import React from 'react';
-import css from '../styles.module.css';
+import css from './ImageGalleryItem.module.css';
 import PropTypes from 'prop-types';
 
 export default function ImageGalleryItem(props, handleClick) {
@@ -10,16 +10,14 @@ export default function ImageGalleryItem(props, handleClick) {
 
   const { webformatURL, id, tags } = props.picture;
   return (
-    <>
-      <li className={css.ImageGalleryItem} onClick={handleClick}>
-        <img
-          src={webformatURL}
-          alt={tags}
-          key={id}
-          className={css.ImageGalleryItemImage}
-        />
-      </li>
-    </>
+    <li className={css.ImageGalleryItem} onClick={handleClick}>
+      <img
+        src={webformatURL}
+        alt={tags}
+        key={id}
+        className={css.ImageGalleryItemImage}
+      />
+    </li>
   );
 }
 
