@@ -16,7 +16,9 @@ export default function useApi() {
   const holdChange = event => {
     const queryValue = event.target.value;
     setQuery(queryValue);
+    console.log(page);
     setPage(1);
+    console.log(page);
   };
 
   const loadMore = eve => {
@@ -24,7 +26,6 @@ export default function useApi() {
     setPage(newPage);
     console.log(newPage);
     getPictures(eve, newPage);
-    newPage = page;
   };
 
   const getPictures = async (even, newPage) => {
