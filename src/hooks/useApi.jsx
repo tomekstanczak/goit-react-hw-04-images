@@ -16,9 +16,7 @@ export default function useApi() {
   const holdChange = event => {
     const queryValue = event.target.value;
     setQuery(queryValue);
-    console.log(page);
     setPage(1);
-    console.log(page);
   };
 
   const loadMore = eve => {
@@ -56,7 +54,6 @@ export default function useApi() {
 
   useEffect(() => {
     setPictures([]);
-    setPage(1);
   }, [query]);
 
   const openModal = selectedPicture => {
