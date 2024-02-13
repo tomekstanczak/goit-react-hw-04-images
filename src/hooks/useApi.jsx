@@ -14,9 +14,9 @@ export default function useApi() {
   const [morePictures, setMorePictures] = useState(false);
 
   const holdChange = event => {
+    setPage(1);
     const queryValue = event.target.value;
     setQuery(queryValue);
-    setPage(1);
   };
 
   const loadMore = eve => {
