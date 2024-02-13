@@ -14,20 +14,24 @@ export default function useApi() {
   const [morePictures, setMorePictures] = useState(false);
 
   const holdChange = event => {
-    setPage(1);
     const queryValue = event.target.value;
     setQuery(queryValue);
   };
 
   const loadMore = eve => {
     const newPage = page + 1;
+    console.log('Before loadMore - Current page:', page);
     setPage(newPage);
-    console.log(newPage);
+    console.log('After setPage - Current page:', page);
     getPictures(eve, newPage);
   };
 
   const getPictures = async (even, page) => {
     even.preventDefault();
+    console.log('Current page:', page);
+    if (page === undefined) {
+      page = 1;
+    }
     setIsLoading(true);
     try {
       const results = await axios.get(
@@ -54,6 +58,7 @@ export default function useApi() {
 
   useEffect(() => {
     setPictures([]);
+    setPage(1);
   }, [query]);
 
   const openModal = selectedPicture => {
