@@ -7,7 +7,6 @@ const keyAuth = '41134158-d3e94c46577e61eb60875764f';
 export default function useApi() {
   const [query, setQuery] = useState('');
   const [pictures, setPictures] = useState([]);
-  const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [selectedPictures, setSelectedPictures] = useState(null);
@@ -18,20 +17,20 @@ export default function useApi() {
     setQuery(queryValue);
   };
 
-  const loadMore = eve => {
-    const newPage = page + 1;
-    console.log('Before loadMore - Current page:', page);
-    setPage(newPage);
-    console.log('After setPage - Current page:', page);
-    getPictures(eve, newPage);
+  const holdSubmit = ev => {
+    ev.preventDefault();
+    setPage(1);
+    setPictures([]);
+    if (page === 1) {
+      getPictures();
+    }
   };
 
-  const getPictures = async (even, page) => {
-    even.preventDefault();
-    console.log('Current page:', page);
-    if (page === undefined) {
-      page = 1;
-    }
+  const loadMore = () => {
+    setPage(prev => prev + 1);
+  };
+
+  const getPictures = async () => {
     setIsLoading(true);
     try {
       const results = await axios.get(
@@ -50,16 +49,17 @@ export default function useApi() {
         setMorePictures(true);
       }
     } catch (error) {
-      setError('error');
+      console.error('error');
     } finally {
       setIsLoading(false);
     }
   };
 
   useEffect(() => {
-    setPictures([]);
-    setPage(1);
-  }, [query]);
+    if (query) {
+      getPictures();
+    }
+  }, [page]);
 
   const openModal = selectedPicture => {
     setSelectedPictures(selectedPicture);
@@ -75,7 +75,7 @@ export default function useApi() {
     selectedPictures,
     morePictures,
     holdChange,
-    getPictures,
+    holdSubmit,
     loadMore,
     openModal,
     closeModal,

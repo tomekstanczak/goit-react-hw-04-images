@@ -13,8 +13,8 @@ export default function App() {
     isLoading,
     selectedPictures,
     morePictures,
+    holdSubmit,
     holdChange,
-    getPictures,
     loadMore,
     openModal,
     closeModal,
@@ -22,7 +22,7 @@ export default function App() {
 
   return (
     <div className={css.App}>
-      <Searchbar onChange={holdChange} onSubmit={getPictures} />
+      <Searchbar onSubmit={holdSubmit} onChange={holdChange} />
       {isLoading && <Loader />}
       <ImageGallery pictures={pictures} openModal={openModal} />
       {morePictures && <Button onClick={loadMore} />}
